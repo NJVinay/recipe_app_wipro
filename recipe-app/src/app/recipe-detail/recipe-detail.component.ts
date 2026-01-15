@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css']
+  styleUrls: ['./recipe-detail.component.css'],
+  standalone: true,
+  imports: [CommonModule]
 })
 
 export class RecipeDetailComponent implements OnInit {
@@ -143,7 +145,7 @@ export class RecipeDetailComponent implements OnInit {
     image: 'https://imgs.search.brave.com/vpn-_DDobS26400FODeSRXkWCsNTrDQM2daSOBw7fB8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTEz/NjQ2NTIxMy9waG90/by90aXJhbWlzdS5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/WEVQdzFuQmxGY1Nu/bWk3SlAxOXM0TnFo/ck9xT3J3b2RUT3ZG/cURoeW5BTT0',
     summary: 'Classic Italian dessert made with layers of coffee-soaked ladyfingers and mascarpone cheese.'
   }
-];
+  ];
 }
 
 type Recipe = {

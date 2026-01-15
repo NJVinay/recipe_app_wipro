@@ -9,18 +9,15 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RecipeSearchComponent,
-    RecipeListComponent,
-    RecipeDetailComponent
-
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppComponent,
+    RecipeSearchComponent,
+    RecipeListComponent,
+    RecipeDetailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

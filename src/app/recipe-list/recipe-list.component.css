@@ -1,0 +1,43 @@
+.recipe-card {
+  border: 1px solid #e2d9cf;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: float-in 0.45s ease both;
+}
+
+/* Ensure consistent aspect ratio across list images */
+.recipe-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+/* Hover effect for recipe cards */
+.recipe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(30, 20, 10, 0.15);
+}
+
+.recipe-card:hover img {
+  transform: scale(1.03);
+}
+
+.row > div:nth-child(1) .recipe-card { animation-delay: 0.02s; }
+.row > div:nth-child(2) .recipe-card { animation-delay: 0.04s; }
+.row > div:nth-child(3) .recipe-card { animation-delay: 0.06s; }
+.row > div:nth-child(4) .recipe-card { animation-delay: 0.08s; }
+.row > div:nth-child(5) .recipe-card { animation-delay: 0.1s; }
+.row > div:nth-child(6) .recipe-card { animation-delay: 0.12s; }
+
+.recipe-card .card-body {
+  padding: 16px 18px 18px;
+}
+
+.recipe-card .card-title {
+  margin: 0;
+  font-size: 1.05rem;
+}

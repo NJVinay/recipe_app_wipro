@@ -1,10 +1,29 @@
 # RecipeApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+Recipe Atlas is a static Angular app for browsing and searching recipes with rich detail pages.
+
+## Tech stack
+
+- Angular 19
+- Bootstrap 5
+- Static JSON data in `src/assets/recipes.json`
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## GitHub Pages deployment
+
+This repo is configured to deploy to GitHub Pages via GitHub Actions on pushes to `main`.
+
+Steps:
+1) Push to `main`.
+2) In GitHub Settings → Pages, set Source to **GitHub Actions**.
+3) Your site will be available at `https://<username>.github.io/<repo-name>/`.
+
+Notes:
+- The workflow sets `--base-href "/<repo-name>/"` for proper routing.
+- `404.html` is generated from `index.html` to support SPA routes.
 
 ## Code scaffolding
 

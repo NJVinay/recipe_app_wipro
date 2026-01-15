@@ -1,1 +1,120 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #f7f3ee;
+  --bg-2: #efe7dd;
+  --ink: #1b1b1b;
+  --muted: #5c554d;
+  --accent: #c65c2c;
+  --accent-2: #1f6f5c;
+  --card: #ffffff;
+  --stroke: #e2d9cf;
+  --shadow: 0 14px 32px rgba(30, 20, 10, 0.12);
+  --shadow-soft: 0 10px 24px rgba(30, 20, 10, 0.08);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #ffe7cf 0%, transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, #d9efe9 0%, transparent 45%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Fraunces', serif;
+  letter-spacing: 0.2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.focus-ring:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid rgba(198, 92, 44, 0.55);
+  outline-offset: 2px;
+}
+
+.btn {
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #b24b21;
+  border-color: #b24b21;
+}
+
+main {
+  padding: 32px 20px 60px;
+}
+
+.container {
+  max-width: 1120px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.page-enter {
+  animation: page-enter 0.5s ease both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

@@ -1,48 +1,62 @@
-/* app.component.css */
-
-/* Body styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  background: rgba(247, 243, 238, 0.85);
+  border-bottom: 1px solid rgba(226, 217, 207, 0.6);
 }
 
-/* Header styles */
-header {
-  background-color: #330808;
-  color: #522323;
-  padding: 10px 20px;
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
 }
 
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
+.brand {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
 }
 
-.navbar-nav {
-  list-style-type: none;
-  padding: 0;
+.brand-text {
+  font-size: 1.25rem;
+  letter-spacing: 0.6px;
+  padding: 6px 10px;
 }
 
-.nav-item {
-  margin-right: 15px;
+.nav-links {
+  display: flex;
+  gap: 16px;
+  font-weight: 500;
 }
 
-.nav-link {
-  color: #0f97f8;
-  text-decoration: none;
-  font-size: 1.2rem;
+.nav-links a {
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  position: relative;
 }
 
-/* Main styles */
-main {
-  padding: 30px;
+.nav-links a:hover {
+  background: #fff3e5;
+  color: #b24b21;
+  transform: translateY(-1px);
 }
 
-/* Footer styles */
-footer {
-  background-color: #8ef674;
-  color: #d69a9a;
-  padding: 10px 20px;
-  text-align: center;
+.nav-links a.active {
+  background: #1f6f5c;
+  color: #fff;
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(31, 111, 92, 0.6);
 }

@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { SpoonacularService } from '../spoonacular.service';
-import { recipes } from 'src/app/recipe-list/recipe';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Recipe } from './recipe';
 
 @Component({
     selector: 'app-recipe-list',
     templateUrl: './recipe-list.component.html',
     styleUrls: ['./recipe-list.component.css'],
-    standalone: true,
-    imports: [CommonModule, RouterModule]
+    standalone: false,
 })
 export class RecipeListComponent implements OnInit {
-    recipes: any[] = [];
+    recipes: Recipe[] = [];
 
-    constructor() { }
+    constructor(private spoonacularService: SpoonacularService) { }
 
     ngOnInit(): void {
-        this.recipes = recipes;
+        this.spoonacularService.getRecipes().subscribe((recipes) => {
+            this.recipes = recipes;
+        });
     }
 }

@@ -1,12 +1,91 @@
 <div class="container mt-4">
-    <h2 class="mb-4">Recipe Search</h2>
-    <div class="input-group mb-3">
-        <!-- Dropdown list of recipes -->
-        <select class="form-control" [(ngModel)]="selectedRecipe" (change)="redirectToRecipe()">
-            <option *ngFor="let recipe of recipes" [value]="recipe.id">{{ recipe.title }}</option>
-        </select>
-        <div class="input-group-append">
-            <button class="btn btn-primary" (click)="searchRecipes()">Search</button>
-        </div>
+  <h2 class="mb-4">Recipe Search</h2>
+
+  <div class="search-bar">
+    <input
+      class="form-control search-input"
+      type="text"
+      placeholder="Search recipes, cuisines, or ingredients..."
+      [(ngModel)]="query"
+      (keyup.enter)="onSearchSubmit()"
+    />
+    <button class="btn btn-primary" (click)="onSearchSubmit()">Search</button>
+  </div>
+
+  <div class="suggestions" *ngIf="suggestions.length">
+    <div class="suggestion" *ngFor="let recipe of suggestions" (click)="navigateToRecipe(recipe)">
+      <span class="suggestion-title">{{ recipe.title }}</span>
     </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="filter-group">
+      <span class="filter-label">Type</span>
+      <button class="filter-pill" [class.active]="filters.veg === 'all'" (click)="setFilter('veg', 'all')">All</button>
+      <button class="filter-pill" [class.active]="filters.veg === 'veg'" (click)="setFilter('veg', 'veg')">Veg</button>
+      <button class="filter-pill" [class.active]="filters.veg === 'non-veg'" (click)="setFilter('veg', 'non-veg')">Non‑Veg</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Cuisine</span>
+      <button class="filter-pill" [class.active]="filters.cuisine === 'all'" (click)="setFilter('cuisine', 'all')">All</button>
+      <button class="filter-pill" [class.active]="filters.cuisine === 'Indian'" (click)="setFilter('cuisine', 'Indian')">Indian</button>
+      <button class="filter-pill" [class.active]="filters.cuisine === 'Italian'" (click)="setFilter('cuisine', 'Italian')">Italian</button>
+      <button class="filter-pill" [class.active]="filters.cuisine === 'Mexican'" (click)="setFilter('cuisine', 'Mexican')">Mexican</button>
+      <button class="filter-pill" [class.active]="filters.cuisine === 'Chinese'" (click)="setFilter('cuisine', 'Chinese')">Chinese</button>
+      <button class="filter-pill" [class.active]="filters.cuisine === 'French'" (click)="setFilter('cuisine', 'French')">French</button>
+      <button class="filter-pill" [class.active]="filters.cuisine === 'American'" (click)="setFilter('cuisine', 'American')">American</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Time</span>
+      <button class="filter-pill" [class.active]="filters.time === 'all'" (click)="setFilter('time', 'all')">All</button>
+      <button class="filter-pill" [class.active]="filters.time === 'quick'" (click)="setFilter('time', 'quick')">Quick</button>
+      <button class="filter-pill" [class.active]="filters.time === 'medium'" (click)="setFilter('time', 'medium')">Medium</button>
+      <button class="filter-pill" [class.active]="filters.time === 'slow'" (click)="setFilter('time', 'slow')">Slow</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Difficulty</span>
+      <button class="filter-pill" [class.active]="filters.difficulty === 'all'" (click)="setFilter('difficulty', 'all')">All</button>
+      <button class="filter-pill" [class.active]="filters.difficulty === 'easy'" (click)="setFilter('difficulty', 'easy')">Easy</button>
+      <button class="filter-pill" [class.active]="filters.difficulty === 'medium'" (click)="setFilter('difficulty', 'medium')">Medium</button>
+      <button class="filter-pill" [class.active]="filters.difficulty === 'hard'" (click)="setFilter('difficulty', 'hard')">Hard</button>
+    </div>
+  </div>
+
+  <div class="helper-sections">
+    <div class="helper-block">
+      <h5>Popular searches</h5>
+      <div class="chip-row">
+        <button class="chip" *ngFor="let term of popularSearches" (click)="applyPopularSearch(term)">
+          {{ term }}
+        </button>
+      </div>
+    </div>
+    <div class="helper-block" *ngIf="recentRecipes.length">
+      <h5>Recently viewed</h5>
+      <div class="chip-row">
+        <button class="chip" *ngFor="let recipe of recentRecipes" (click)="navigateToRecipe(recipe)">
+          {{ recipe.title }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-grid" *ngIf="previewRecipes.length; else emptyState">
+    <div class="result-card" *ngFor="let recipe of previewRecipes" (click)="navigateToRecipe(recipe)">
+      <img [src]="recipe.image" alt="Recipe image">
+      <div class="result-title">{{ recipe.title }}</div>
+    </div>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <h4>No matches yet</h4>
+      <p>Try a popular search or reset filters to explore.</p>
+      <div class="chip-row">
+        <button class="chip" *ngFor="let term of popularSearches.slice(0, 3)" (click)="applyPopularSearch(term)">
+          Try {{ term }}
+        </button>
+      </div>
+    </div>
+  </ng-template>
 </div>

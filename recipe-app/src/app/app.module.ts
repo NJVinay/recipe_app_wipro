@@ -13,7 +13,9 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
+    AppRoutingModule
+  ],
+  declarations: [
     AppComponent,
     RecipeSearchComponent,
     RecipeListComponent,

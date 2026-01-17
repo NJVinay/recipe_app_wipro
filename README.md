@@ -1,5 +1,7 @@
 # RecipeApp
 
+**GitHub Repository**: https://github.com/NJVinay/recipe_app_wipro
+
 Recipe Atlas is a static Angular app for browsing and searching recipes with rich detail pages.
 
 ## Tech stack
